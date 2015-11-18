@@ -10,7 +10,7 @@ pk: demo_cross
 	mkdir -p pocl
 	./demo_cross
 	llc -march=riscv64 -mcpu=RV64IMAFDXhwacha -o=kernel.rv.S pocl/*/*/simple_demo/*/target_parallel.bc
-	#llc --debug -march=riscv64 -mcpu=RV64IMAFDXhwacha -o=kernel.rv.S pocl/*/*/
+	riscv64-unknown-elf-gcc -Wa,-march=RVIMAFDXhwacha -o saxpy.pk.riscv glue.c kernel.rv.S
 
 clean:
-	rm -rf input_*.h kernel.cl.bin demo_cross pocl
+	rm -rf input_*.h wg_array.h kernel.cl.bin kernel.rv.S glue.c demo_cross pocl saxpy.pk.riscv
