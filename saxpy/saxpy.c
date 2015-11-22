@@ -33,7 +33,7 @@
 #include <unistd.h>
 #include <ltdl.h>
 
-#define NUM_DATA 128
+#define NUM_DATA 10000
 
 #define CL_CHECK(_expr)                                                         \
    do {                                                                         \
@@ -446,7 +446,7 @@ int main(int argc, char **argv)
 
   printf("attempting to create kernel\n");
   fflush(stdout);
-	kernel = CL_CHECK_ERR(clCreateKernel(program, "simple_demo", &_err));
+	kernel = CL_CHECK_ERR(clCreateKernel(program, "saxpy", &_err));
   printf("setting up kernel args cl_mem:%lx \n",input_buffer);
   fflush(stdout);
 	CL_CHECK(clSetKernelArg(kernel, 0, sizeof(input_buffer), &input_buffer));
