@@ -394,7 +394,7 @@ int main(int argc, char **argv)
 	context = CL_CHECK_ERR(clCreateContext(NULL, 1, devices, &pfn_notify, NULL, &_err));
 
 	cl_command_queue queue;
-	queue = CL_CHECK_ERR(clCreateCommandQueue(context, devices[0], 0, &_err));
+  queue = CL_CHECK_ERR(clCreateCommandQueue(context, devices[0], CL_QUEUE_PROFILING_ENABLE, &_err));
 
 	cl_kernel kernel = 0;
   cl_mem memObjects[2] = {0,0};
