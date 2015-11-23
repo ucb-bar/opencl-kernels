@@ -1,6 +1,7 @@
 // m0 m1 m2
 // m3 m4 m5
 // m6 m7 m8
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
 __kernel void dfilter(__global double *src, __global double *dst, long ldc,
   double m0, double m1, double m2, double m3, double m4, double m5, double m6, double m7, double m8)
 {

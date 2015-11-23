@@ -1,3 +1,6 @@
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+
+
 __kernel void dgemm_single( __global double *A, __global double *B, __global double *C, int ldc)
 {
   long i = get_global_id(0);

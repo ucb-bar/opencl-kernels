@@ -1,3 +1,7 @@
+
+
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+
 __kernel void sdgemm_single( __global float *A, __global float *B, __global float *C, int ldc)
 {
   long i = get_global_id(0);

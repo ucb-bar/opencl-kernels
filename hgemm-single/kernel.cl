@@ -1,3 +1,6 @@
+
+#pragma OPENCL EXTENSION cl_khr_fp16 : enable
+
 __kernel void hgemm_single( __global half *A, __global half *B, __global half *C, int ldc)
 {
   long i = get_global_id(0);
