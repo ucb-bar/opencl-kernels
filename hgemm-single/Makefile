@@ -28,5 +28,8 @@ bare: kernel.rv.S crt.o syscalls.o glue.c
 		                     -c -I../env -I../common -I. kernel.rv.S -o kernel.rv.o
 	riscv64-unknown-elf-gcc -T ../common/test.ld -I../env -I../common -I. glue.o syscalls.o crt.o kernel.rv.o -o hgemm-single.riscv -nostdlib -nostartfiles -ffast-math -lc -lgcc
 
+hex: hgemm-single.riscv
+	elf2hex 16 2097152 hgemm-single.riscv > hgemm-single.riscv.hex
+
 clean:
-	rm -rf input_*.h wg_array.h kernel.cl.bin kernel.rv.S glue.c *.o demo_cross pocl hgemm-single.pk.riscv hgemm-single.riscv
+	rm -rf input_*.h wg_array.h kernel.cl.bin kernel.rv.S glue.c *.o demo_cross pocl hgemm-single.pk.riscv hgemm-single.riscv hgemm-single.riscv.hex

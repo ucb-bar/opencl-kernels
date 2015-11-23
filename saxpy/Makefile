@@ -29,5 +29,8 @@ bare: kernel.rv.S crt.o syscalls.o glue.c
 		                     -c -I../env -I../common -I. kernel.rv.S -o kernel.rv.o
 	riscv64-unknown-elf-gcc -T ../common/test.ld -I../env -I../common -I. glue.o syscalls.o crt.o kernel.rv.o -o saxpy.riscv -nostdlib -nostartfiles -ffast-math -lc -lgcc
 
+hex: saxpy.riscv
+	elf2hex 16 2097152 saxpy.riscv > saxpy.riscv.hex
+
 clean:
-	rm -rf input_*.h wg_array.h kernel.cl.bin kernel.rv.S glue.c *.o demo_cross pocl saxpy.pk.riscv saxpy.riscv
+	rm -rf input_*.h wg_array.h kernel.cl.bin kernel.rv.S glue.c *.o demo_cross pocl saxpy.pk.riscv saxpy.riscv saxpy.riscv.hex

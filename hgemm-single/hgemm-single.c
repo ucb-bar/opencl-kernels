@@ -34,7 +34,7 @@
 #include <unistd.h>
 #include <ltdl.h>
 
-#define NUM_DATA 16
+#define NUM_DATA 64
 
 #define CL_CHECK(_expr)                                                         \
    do {                                                                         \
@@ -537,7 +537,7 @@ int main(int argc, char **argv)
 	}
 
 	cl_event kernel_completion;
-  const size_t local_work_size[3] = { 4, 1, 1};
+  const size_t local_work_size[3] = { 64, 1, 1};
   //                             a_offset  
 	size_t global_work_size[3] = { NUM_DATA, NUM_DATA, NUM_DATA };
   printf("attempting to enqueue kernel\n");
