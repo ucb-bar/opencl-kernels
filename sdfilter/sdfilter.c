@@ -1,4 +1,4 @@
-/*
+G*
  *  Simple OpenCL demo program
  *
  *  Copyright (C) 2009  Clifford Wolf <clifford@clifford.at>
