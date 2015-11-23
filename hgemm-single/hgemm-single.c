@@ -530,8 +530,9 @@ int main(int argc, char **argv)
   printf("attempting to enqueue write buffer\n");
   fflush(stdout);
 	for (int i=0; i<NUM_DATA*NUM_DATA; i++) {
-    cl_half in = poclu_float_to_cl_half(1);
+    cl_half in = poclu_float_to_cl_half((float)((float)rand()/(float)(RAND_MAX)) * 100.0);
 		CL_CHECK(clEnqueueWriteBuffer(queue, input_bufferA, CL_TRUE, i*sizeof(cl_half), 2, &in, 0, NULL, NULL));
+    in = poclu_float_to_cl_half((float)((float)rand()/(float)(RAND_MAX)) * 100.0);
 		CL_CHECK(clEnqueueWriteBuffer(queue, input_bufferB, CL_TRUE, i*sizeof(cl_half), 2, &in, 0, NULL, NULL));
 	}
 
