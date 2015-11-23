@@ -1,5 +1,11 @@
 all: pk
 
+mali: hgemm-single.c Makefile
+	rm -rf pocl/* kernel.cl.bin
+	mkdir -p pocl
+	g++ -g -gdwarf-2 -fno-rtti saxpy.c -odemo_cross -L/usr/lib -lstdc++ -lm -lOpenCL
+	./demo_cross
+
 demo_cross: hgemm-single.c Makefile
 	mkdir -p pocl
 	g++ -g -gdwarf-2 -O0 -fno-rtti -DDEBUGPOCL_LLVM_API=1 hgemm-single.c `pkg-config --libs --cflags pocl` -odemo_cross -lhwloc -L$(OPENCL_NATIVE)/lib -lclang -lLLVM-3.7 -lstdc++ -lm -lltdl

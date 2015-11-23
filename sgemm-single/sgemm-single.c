@@ -472,14 +472,19 @@ int main(int argc, char **argv)
 	CL_CHECK(clEnqueueNDRangeKernel(queue, kernel, 3, NULL, global_work_size, local_work_size, 0, NULL, &kernel_completion));
   printf("Enqueue'd kerenel\n");
   fflush(stdout);
-	CL_CHECK(clWaitForEvents(1, &kernel_completion));
+  cl_ulong time_start, time_end;
+  CL_CHECK(clWaitForEvents(1, &kernel_completion));
+  CL_CHECK(clGetEventProfilingInfo(kernel_completion, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL));
+  CL_CHECK(clGetEventProfilingInfo(kernel_completion, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL));
+  double elapsed = time_end - time_start;
+  printf("time(ns):%lg\n",elapsed);
 	CL_CHECK(clReleaseEvent(kernel_completion));
 
 	printf("Result:");
 	for (int i=0; i<NUM_DATA*NUM_DATA; i++) {
 		float data;
 		CL_CHECK(clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, i*sizeof(float), 4, &data, 0, NULL, NULL));
-		printf(" %f", data);
+		//printf(" %f", data);
 	}
 	printf("\n");
 
