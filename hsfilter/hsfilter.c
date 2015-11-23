@@ -554,7 +554,7 @@ int main(int argc, char **argv)
 	cl_event kernel_completion;
 	size_t global_offset[2] = { 1, 1};
 	size_t global_work_size[2] = { NUM_DATA - 2, NUM_DATA - 2};//avoid the edges
-  const size_t local_work_size[2] = { 64, 1 };
+  const size_t local_work_size[2] = { 32, 1 };
   printf("attempting to enqueue kernel\n");
   fflush(stdout);
 	CL_CHECK(clEnqueueNDRangeKernel(queue, kernel, 2, global_offset, global_work_size, local_work_size, 0, NULL, &kernel_completion));
