@@ -457,8 +457,9 @@ int main(int argc, char **argv)
   printf("attempting to enqueue write buffer\n");
   fflush(stdout);
 	for (int i=0; i<NUM_DATA*NUM_DATA; i++) {
-    double in = (double)1;
+    double in = ((double)rand()/(double)(RAND_MAX)) * 100.0;;
 		CL_CHECK(clEnqueueWriteBuffer(queue, input_bufferA, CL_TRUE, i*sizeof(double), 8, &in, 0, NULL, NULL));
+    in = ((double)rand()/(double)(RAND_MAX)) * 100.0;;
 		CL_CHECK(clEnqueueWriteBuffer(queue, input_bufferB, CL_TRUE, i*sizeof(double), 8, &in, 0, NULL, NULL));
 	}
 
