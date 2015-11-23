@@ -513,7 +513,7 @@ int main(int argc, char **argv)
   memObjects[0] = input_buffer;
   memObjects[1] = output_buffer;
 
-  long ldc = NUM_DATA;
+  long long ldc = NUM_DATA;
 
   float m0 = 1.0;
   float m1 = 1.0;

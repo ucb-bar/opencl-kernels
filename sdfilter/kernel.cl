@@ -4,7 +4,7 @@
 // m0 m1 m2
 // m3 m4 m5
 // m6 m7 m8
-__kernel void sdfilter(__global float *src, __global float *dst, long ldc,
+__kernel void sdfilter(__global float *src, __global float *dst, long long ldc,
   double m0, double m1, double m2, double m3, double m4, double m5, double m6, double m7, double m8)
 {
   long x = get_global_id(0);
