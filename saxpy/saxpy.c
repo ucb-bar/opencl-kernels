@@ -370,6 +370,7 @@ int main(int argc, char **argv)
 		char buffer[10240];
 		cl_uint buf_uint;
 		cl_ulong buf_ulong;
+    size_t wi_size[3];
 		printf("  -- %d --\n", i);
 		CL_CHECK(clGetDeviceInfo(devices[i], CL_DEVICE_NAME, sizeof(buffer), buffer, NULL));
 		printf("  DEVICE_NAME = %s\n", buffer);
@@ -385,6 +386,8 @@ int main(int argc, char **argv)
 		printf("  DEVICE_MAX_CLOCK_FREQUENCY = %u\n", (unsigned int)buf_uint);
 		CL_CHECK(clGetDeviceInfo(devices[i], CL_DEVICE_GLOBAL_MEM_SIZE, sizeof(buf_ulong), &buf_ulong, NULL));
 		printf("  DEVICE_GLOBAL_MEM_SIZE = %llu\n", (unsigned long long)buf_ulong);
+		CL_CHECK(clGetDeviceInfo(devices[i], CL_DEVICE_MAX_WORK_ITEM_SIZES, sizeof(wi_size), &wi_size, NULL));
+		printf("  DEVICE_MAX_WG_SIZE X=%ld,Y=%ld,Z=%ld\n", wi_size[0], wi_size[1], wi_size[2]);
 	}
 
 	if (devices_n == 0)
