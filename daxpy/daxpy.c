@@ -31,7 +31,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <ltdl.h>
 
 #define NUM_DATA 10000
 

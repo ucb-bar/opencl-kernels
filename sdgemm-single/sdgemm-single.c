@@ -32,7 +32,6 @@
 #include <string.h>
 #include <math.h>
 #include <unistd.h>
-#include <ltdl.h>
 
 #define NUM_DATA 64
 

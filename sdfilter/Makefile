@@ -3,7 +3,7 @@ all: pk
 mali: sdfilter.c Makefile
 	rm -rf pocl/* kernel.cl.bin
 	mkdir -p pocl
-	g++ -g -gdwarf-2 -fno-rtti saxpy.c -odemo_cross -L/usr/lib -lstdc++ -lm -lOpenCL
+	g++ -g -gdwarf-2 -fno-rtti sdfilter.c -odemo_cross -L/usr/lib -lstdc++ -lm -lOpenCL
 	./demo_cross
 
 demo_cross: sdfilter.c Makefile
