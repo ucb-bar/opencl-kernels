@@ -32,7 +32,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#define NUM_DATA 10000
+#define NUM_DATA 65536
 
 #define CL_CHECK(_expr)                                                         \
    do {                                                                         \
@@ -444,7 +444,7 @@ int main(int argc, char **argv)
   memObjects[0] = input_buffer;
   memObjects[1] = output_buffer;
 
-	float factor = 2.0;
+  float factor = ((float)rand()/(float)(RAND_MAX)) * 100.0;
 
   printf("attempting to create kernel\n");
   fflush(stdout);
@@ -464,10 +464,9 @@ int main(int argc, char **argv)
 
 	cl_event kernel_completion;
 	size_t global_work_size[1] = { NUM_DATA };
-  const size_t local_work_size[1] = { 250 };
   printf("attempting to enqueue kernel\n");
   fflush(stdout);
-	CL_CHECK(clEnqueueNDRangeKernel(queue, kernel, 1, NULL, global_work_size, local_work_size, 0, NULL, &kernel_completion));
+	CL_CHECK(clEnqueueNDRangeKernel(queue, kernel, 1, NULL, global_work_size, NULL, 0, NULL, &kernel_completion));
   printf("Enqueue'd kerenel\n");
   fflush(stdout);
   cl_ulong time_start, time_end;
