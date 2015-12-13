@@ -1,5 +1,5 @@
 
-bench = daxpy dfilter dgemm-single hgemm-single hsaxpy hsfilter mask-dfilter mask-hsfilter mask-sdfilter mask-sfilter saxpy sdaxpy sdfilter sdgemm-single sfilter sgemm-single
+bench = daxpy dfilter dfilter-unroll dgemm-single dgemm-unroll hgemm-single hsaxpy hsfilter hsfilter-unroll hsgemm-unroll mask-dfilter mask-dfilter-unroll mask-hsfilter mask-hsfilter-unroll mask-sdfilter mask-sdfilter-unroll mask-sfilter mask-sfilter-unroll saxpy sdaxpy sdfilter sdfilter-unroll sdgemm-single sdgemm-unroll sfilter sfilter-unroll sgemm-single sgemm-unroll
 
 all: $(bench)
 

@@ -448,7 +448,7 @@ int main(int argc, char **argv)
 
   printf("attempting to create kernel\n");
   fflush(stdout);
-	kernel = CL_CHECK_ERR(clCreateKernel(program, "sgemm_single", &_err));
+	kernel = CL_CHECK_ERR(clCreateKernel(program, "sgemm_unroll", &_err));
 	CL_CHECK(clSetKernelArg(kernel, 0, sizeof(input_bufferA), &input_bufferA));
 	CL_CHECK(clSetKernelArg(kernel, 1, sizeof(input_bufferB), &input_bufferB));
 	CL_CHECK(clSetKernelArg(kernel, 2, sizeof(output_buffer), &output_buffer));

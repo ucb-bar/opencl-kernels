@@ -513,7 +513,7 @@ int main(int argc, char **argv)
   memObjects[0] = input_buffer;
   memObjects[1] = output_buffer;
 
-  long long ldc = num_data;
+  long long ldc = NUM_DATA;
 
   float m0 = ((float)rand()/(float)(RAND_MAX)) * 1.0;
   float m1 = ((float)rand()/(float)(RAND_MAX)) * 1.0;

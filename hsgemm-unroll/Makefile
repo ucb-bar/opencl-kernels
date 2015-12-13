@@ -1,9 +1,9 @@
 all: pk
 
-mali: hgemm-unroll.c Makefile
+mali: hsgemm-unroll.c Makefile
 	rm -rf pocl/* kernel.cl.bin
 	mkdir -p pocl
-	g++ -g -gdwarf-2 -fno-rtti hgemm-unroll.c -odemo_cross -L/usr/lib -lstdc++ -lm -lOpenCL
+	g++ -g -gdwarf-2 -fno-rtti hsgemm-unroll.c -odemo_cross -L/usr/lib -lstdc++ -lm -lOpenCL
 	./demo_cross
 
 demo_cross: hsgemm-unroll.c Makefile
