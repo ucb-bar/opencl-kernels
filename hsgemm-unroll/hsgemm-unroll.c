@@ -464,10 +464,10 @@ int main(int argc, char **argv)
 		return 1;
 
 	cl_context context;
-	context = CL_CHECK_ERR(clCreateContext(NULL, 1, devices, &pfn_notify, NULL, &_err));
+	context = CL_CHECK_ERR(clCreateContext(NULL, 1, devices+1, &pfn_notify, NULL, &_err));
 
 	cl_command_queue queue;
-  queue = CL_CHECK_ERR(clCreateCommandQueue(context, devices[0], CL_QUEUE_PROFILING_ENABLE, &_err));
+  queue = CL_CHECK_ERR(clCreateCommandQueue(context, devices[1], CL_QUEUE_PROFILING_ENABLE, &_err));
 
 	cl_kernel kernel = 0;
   cl_mem memObjects[3] = {0,0,0};
@@ -477,11 +477,11 @@ int main(int argc, char **argv)
   //  If that is not available, then create the program from source
   //  and store the binary for future use.
   std::cout << "Attempting to create program from binary..." << std::endl;
-  cl_program program = CreateProgramFromBinary(context, devices[0], "kernel.cl.bin");
+  cl_program program = CreateProgramFromBinary(context, devices[1], "kernel.cl.bin");
   if (program == NULL)
   {
       std::cout << "Binary not loaded, create from source..." << std::endl;
-      program = CreateProgram(context, devices[0], "kernel.cl");
+      program = CreateProgram(context, devices[1], "kernel.cl");
       if (program == NULL)
       {
           Cleanup(context, queue, program, kernel, memObjects);
@@ -489,7 +489,7 @@ int main(int argc, char **argv)
       }
 
       std::cout << "Save program binary for future run..." << std::endl;
-      if (SaveProgramBinary(program, devices[0], "kernel.cl.bin") == false)
+      if (SaveProgramBinary(program, devices[1], "kernel.cl.bin") == false)
       {
           std::cerr << "Failed to write program binary" << std::endl;
           Cleanup(context, queue, program, kernel, memObjects);
